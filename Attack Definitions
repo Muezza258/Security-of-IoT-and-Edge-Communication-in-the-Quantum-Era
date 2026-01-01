@@ -4,3 +4,13 @@ The store-now-decrypt-later (SNDL) attack exploits the temporal decoupling betwe
 Once a fault-tolerant quantum computer is realized, the adversary retroactively applies quantum algorithms, such as Shor’s algorithm, to recover the long-term cryptographic secrets underlying classical public-key mechanisms. This enables decryption of previously recorded traffic, even though the communication was cryptographically secure at the time of transmission. Consequently, confidentiality guarantees become time-dependent rather than absolute, violating traditional security assumptions.\\
 The SNDL attack is particularly severe in IoT and edge systems due to the long operational lifetime of deployed devices, which often exceeds the anticipated timeline for practical quantum computing. Moreover, the resource constraints of IoT devices discourage frequent key rotation or post-deployment cryptographic upgrades, further extending the vulnerability window. As a result, sensitive telemetry, control commands, and contextual metadata remain exposed to future compromise.\\
 Under the assumed adversary model, the SNDL attack does not require active network manipulation, physical device access, or protocol deviation. Instead, it relies solely on passive eavesdropping combined with delayed cryptanalysis, making it stealthy, low-cost, and difficult to detect. This property renders conventional intrusion detection and anomaly-based defenses ineffective against SNDL attacks.
+
+##Attack Preconditions
+The SNDL attack succeeds under the following conditions:
+1. Communication relies on classical public-key cryptographic primitives vulnerable to quantum attacks.
+2. Encrypted traffic can be passively observed and stored by the adversary.
+3. Confidentiality requirements extend beyond the time horizon of cryptographic algorithm viability.
+4. Cryptographic material remains reusable or derivable from long-term secrets.
+
+##Security Implication
+The SNDL attack demonstrates that classical notions of “secure at transmission time” are insufficient in the quantum era. Instead, security mechanisms for IoT and edge systems must ensure confidentiality persistence, guaranteeing that intercepted data remains computationally infeasible to decrypt even under future quantum adversaries.
